@@ -4,8 +4,8 @@ import {Categories, SortPopup, PizzaBlock} from '../components/';
 
 function Home(props) {
   return (
-    <div class="container">
-      <div class="content__top">
+    <div className="container">
+      <div className="content__top">
         <Categories items={[
           'Все',
           'Мясные',
@@ -15,10 +15,14 @@ function Home(props) {
           'Закрытые'
         ]}
           onClick={(name) => alert(name)} />
-        <SortPopup items={['популярности', 'цене', 'алфавиту']} />
+        <SortPopup items={[
+          {name: 'популярности', type: 'popular'},
+         {name: 'цене', type: 'price'}, 
+         {name: 'алфавиту', type: 'alphabet'}
+         ]} />
       </div>
-      <h2 class="content__title">Все пиццы</h2>
-      <div class="content__items">
+      <h2 className="content__title">Все пиццы</h2>
+      <div className="content__items">
         
         
         {

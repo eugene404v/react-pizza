@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 function PizzaBlock(props) {
   const typeNames = ['традиционная', 'тонкая']
@@ -16,14 +17,14 @@ function PizzaBlock(props) {
   }
 
   return (
-    <div class="pizza-block">
+    <div className="pizza-block">
       <img
-        class="pizza-block__image"
+        className="pizza-block__image"
         src={props.imageUrl}
         alt="Pizza"
       />
-      <h4 class="pizza-block__title">{props.name}</h4>
-      <div class="pizza-block__selector">
+      <h4 className="pizza-block__title">{props.name}</h4>
+      <div className="pizza-block__selector">
         <ul>
           {typeNames.map((type, index) => <li
             key={type}
@@ -45,9 +46,9 @@ function PizzaBlock(props) {
           >{size} см.</li>)}
         </ul>
       </div>
-      <div class="pizza-block__bottom">
-        <div class="pizza-block__price">от {props.price} ₽</div>
-        <div class="button button--outline button--add">
+      <div className="pizza-block__bottom">
+        <div className="pizza-block__price">от {props.price} ₽</div>
+        <div className="button button--outline button--add">
           <svg
             width="12"
             height="12"
@@ -66,6 +67,22 @@ function PizzaBlock(props) {
       </div>
     </div>
   )
+}
+
+PizzaBlock.propTypes = {
+  name: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  types: PropTypes.arrayOf(PropTypes.number).isRequired,
+  sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
+
+PizzaBlock.defaultProps = {
+  name: '---',
+  imageUrl: '',
+  price: 0,
+  types: [],
+  sizes: [],
 }
 
 export default PizzaBlock
