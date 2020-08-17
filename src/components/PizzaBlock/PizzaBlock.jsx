@@ -38,7 +38,7 @@ function PizzaBlock(props) {
         <ul>
         {availableSizes.map((size, index) => <li
             key={size}
-            onClick={() => onSelectSize(index)}
+            onClick={() => onSelectSize(size)}
             className={classNames({
               'active': activeSize === size,
               'disabled': !props.sizes.includes(size)

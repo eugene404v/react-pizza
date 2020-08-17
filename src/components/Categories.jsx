@@ -1,23 +1,22 @@
 import React from 'react'
 
-export default function Categories(props) {
-  const [activeItem, setActiveItem] = React.useState(0)
-  
-  const onSelectItem = (index) => {
-    setActiveItem(index)
-  }
+
+const Categories = React.memo(function Categories(props) {
+
   
   return (
     <div className="categories">
       <ul>
         {props.items.map((name, index) => (
           <li
-            className={activeItem === index ? 'active' : ''} 
+            className={props.activeCategory === index ? 'active' : ''} 
             key={`${name}_${index}`}
-            onClick={()=>onSelectItem(index)}
+            onClick={()=>props.onClickCategory(index)}
           >{name}</li>
         ))}
       </ul>
     </div>
   )
-}
+})
+
+export default Categories
