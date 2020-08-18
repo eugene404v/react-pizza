@@ -8,7 +8,7 @@ import { fetchPizzas } from '../redux/actions/pizzas';
 import { addPizzaToCart } from '../redux/actions/cart';
 
 const categoryNames = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
-const sortIems = [
+const sortItems = [
   { name: 'популярности', type: 'popular', order: 'desc' },
   { name: 'цене', type: 'price', order: 'desc' },
   { name: 'алфавит', type: 'name', order: 'asc' },
@@ -34,10 +34,7 @@ function Home() {
   }, []);
 
   const handleAddPizzaToCart = (obj) => {
-    dispatch({
-      type: 'ADD_PIZZA_CART',
-      payload: obj,
-    });
+    dispatch(addPizzaToCart(obj));
   };
 
   return (
@@ -50,7 +47,7 @@ function Home() {
         />
         <SortPopup
           activeSortType={sortBy.type}
-          items={sortIems}
+          items={sortItems}
           onClickSortType={onSelectSortType}
         />
       </div>
